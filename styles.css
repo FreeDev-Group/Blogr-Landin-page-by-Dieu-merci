@@ -1,0 +1,497 @@
+/* ============================================
+   BLOGR LANDING PAGE — STYLES
+   Section 1: Hero / Header
+   ============================================ */
+
+/* ---------- CSS Variables / Design Tokens ---------- */
+:root {
+  /* Primary */
+  --red-500: hsl(356, 100%, 66%);
+  --red-400: hsl(355, 100%, 74%);
+  --blue-900: hsl(208, 49%, 24%);
+
+  /* Neutral */
+  --white: hsl(0, 0%, 100%);
+  --gray-600: hsl(207, 13%, 34%);
+  --gray-900: hsl(240, 10%, 16%);
+
+  /* Gradients */
+  --orange-300: hsl(13, 100%, 72%);
+  --red-550: hsl(353, 100%, 62%);
+  --purple-950: hsl(237, 17%, 21%);
+  --purple-900: hsl(237, 23%, 31%);
+
+  /* Typography */
+  --ff-body: 'Overpass', sans-serif;
+  --ff-nav: 'Ubuntu', sans-serif;
+  --fs-base: 16px;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--fs-base);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--ff-body);
+  color: var(--gray-600);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ---------- Utility ---------- */
+.attribution {
+  font-size: 0.6875rem;
+  text-align: center;
+  padding: 1rem;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.1rem;
+  border-radius: 50px;
+  font-family: var(--ff-nav);
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn--white {
+  background: var(--white);
+  color: var(--red-500);
+}
+.btn--white:hover {
+  background: var(--red-400);
+  color: var(--white);
+}
+
+.btn--white-fill {
+  background: var(--white);
+  color: var(--red-500);
+  padding: 0.85rem 1.3rem;
+}
+.btn--white-fill:hover {
+  background: var(--red-400);
+  color: var(--white);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--white);
+  padding: 0.85rem 1.3rem;
+}
+.btn--outline:hover {
+  background: var(--white);
+  color: var(--red-400);
+}
+
+.btn--gradient-mobile {
+  background: linear-gradient(to right, var(--orange-300), var(--red-550));
+  color: var(--white);
+  display: block;
+  width: 140px;
+  margin: 0 auto;
+  padding: 0.85rem 2rem;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+  background: linear-gradient(135deg, var(--orange-300), var(--red-550));
+  border-radius: 0 0 0 80px;
+  position: relative;
+  overflow: hidden;
+  padding: 3.5rem 1.5rem 10rem;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./images/bg-pattern-intro-mobile.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 160%;
+  z-index: 0;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.nav__left {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  width: 100%;
+}
+
+.nav__logo img {
+  width: 82px;
+  height: auto;
+}
+
+/* -- Hamburger -- */
+.nav__hamburger {
+  display: block;
+  margin-left: auto;
+  z-index: 20;
+  background: none;
+  border: none;
+  padding: 0.25rem;
+}
+
+.nav__hamburger-close {
+  display: none;
+}
+
+.nav__hamburger.is-active .nav__hamburger-open {
+  display: none;
+}
+
+.nav__hamburger.is-active .nav__hamburger-close {
+  display: block;
+}
+
+/* -- Navigation Menu -- */
+.nav__menu {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border-radius: 8px;
+  padding: 1.8rem 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  z-index: 100;
+}
+
+.nav__menu.is-open {
+  display: flex;
+}
+
+/* -- Nav Items -- */
+.nav__item {
+  text-align: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid hsla(207, 13%, 34%, 0.1);
+}
+
+.nav__item:last-of-type {
+  border-bottom: none;
+}
+
+.nav__link {
+  font-family: var(--ff-nav);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--blue-900);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0;
+}
+
+/* Arrows */
+.nav__arrow {
+  width: 10px;
+  height: 7px;
+  transition: transform 0.3s ease;
+}
+
+.nav__arrow--light {
+  display: none;
+}
+
+.nav__arrow--dark {
+  display: inline-block;
+}
+
+.nav__link--dropdown[aria-expanded="true"] .nav__arrow {
+  transform: rotate(180deg);
+}
+
+/* -- Dropdown -- */
+.nav__dropdown {
+  background: hsla(207, 13%, 34%, 0.08);
+  border-radius: 6px;
+  padding: 1rem 0;
+  margin-top: 0.6rem;
+  display: none;
+}
+
+.nav__item--dropdown.is-open .nav__dropdown {
+  display: block;
+}
+
+.nav__dropdown-link {
+  display: block;
+  padding: 0.4rem 1.2rem;
+  color: var(--gray-600);
+  font-family: var(--ff-nav);
+  font-weight: 400;
+  font-size: 0.95rem;
+  transition: font-weight 0.2s ease;
+}
+
+.nav__dropdown-link:hover {
+  font-weight: 700;
+}
+
+/* -- Auth Mobile -- */
+.nav__auth-mobile {
+  border-top: 1px solid hsla(207, 13%, 34%, 0.15);
+  margin-top: 0.8rem;
+  padding-top: 1.2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav__login-mobile {
+  font-family: var(--ff-nav);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--blue-900);
+}
+
+/* -- Auth Desktop (hidden on mobile) -- */
+.nav__auth {
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav__login {
+  font-family: var(--ff-nav);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--white);
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.nav__login:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* ============================================
+   HERO CONTENT
+   ============================================ */
+.hero__content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4rem;
+}
+
+.hero__title {
+  font-family: var(--ff-body);
+  font-weight: 600;
+  font-size: 2.2rem;
+  color: var(--white);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.8rem;
+}
+
+.hero__subtitle {
+  font-family: var(--ff-body);
+  font-weight: 300;
+  font-size: 1.1rem;
+  color: hsla(0, 0%, 100%, 0.8);
+  margin-bottom: 2.5rem;
+}
+
+.hero__buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* ============================================
+   DESKTOP STYLES (768px+)
+   ============================================ */
+@media (min-width: 768px) {
+  .hero {
+    padding: 3.5rem 2rem 10rem;
+    border-radius: 0 0 0 100px;
+  }
+
+  .hero::before {
+    background-image: url('./images/bg-pattern-intro-desktop.svg');
+    background-position: 25% 52%;
+    background-size: 220%;
+  }
+
+  /* Hamburger hidden */
+  .nav__hamburger {
+    display: none;
+  }
+
+  /* Nav menu is always visible on desktop */
+  .nav__menu {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    gap: 0.5rem;
+  }
+
+  .nav__item {
+    text-align: left;
+    padding: 0;
+    border-bottom: none;
+    position: relative;
+  }
+
+  .nav__link {
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.9;
+    padding: 0.5rem 1rem;
+  }
+
+  .nav__link:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+  /* Arrows — show light, hide dark on desktop */
+  .nav__arrow--light {
+    display: inline-block;
+  }
+
+  .nav__arrow--dark {
+    display: none;
+  }
+
+  /* Desktop dropdown */
+  .nav__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 168px;
+    background: var(--white);
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 1.2rem 0;
+    margin-top: 0.5rem;
+    z-index: 50;
+  }
+
+  .nav__dropdown-link {
+    color: var(--gray-900);
+    padding: 0.4rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .nav__dropdown-link:hover {
+    font-weight: 700;
+  }
+
+  /* Auth mobile hidden on desktop */
+  .nav__auth-mobile {
+    display: none;
+  }
+
+  /* Auth desktop visible */
+  .nav__auth {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  /* Hero */
+  .hero__title {
+    font-size: 3.5rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1024px) {
+  .hero {
+    padding: 3.5rem 4rem 10rem;
+  }
+
+  .nav__left {
+    gap: 4rem;
+  }
+
+  .hero__title {
+    font-size: 4rem;
+  }
+}
