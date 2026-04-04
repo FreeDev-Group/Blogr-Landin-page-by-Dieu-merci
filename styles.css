@@ -403,6 +403,10 @@ img {
   margin: 0 auto;
 }
 
+.features--laptop .features__grid {
+  flex-direction: column;
+}
+
 .features__text {
   display: flex;
   flex-direction: column;
@@ -645,6 +649,10 @@ img {
     gap: 0;
   }
 
+  .features--laptop .features__grid {
+    flex-direction: row;
+  }
+
   .features__text {
     flex: 1;
     padding-right: 2rem;
@@ -666,6 +674,21 @@ img {
     max-width: none;
     width: 150%;
     transform: translateX(20%);
+  }
+
+  /* -- Section 4 Desktop Overrides -- */
+  .features--laptop .features__text {
+    padding-right: 0;
+    padding-left: 2rem;
+  }
+
+  .features--laptop .features__illustration {
+    justify-content: flex-start;
+  }
+
+  .features--laptop .features__img {
+    width: 125%;
+    transform: translateX(-15%);
   }
 
   /* -- Section 3 Desktop -- */
@@ -731,6 +754,16 @@ img {
   .features__img {
     width: 160%;
     transform: translateX(25%);
+  }
+
+  /* Section 4 large desktop */
+  .features--laptop .features__text {
+    padding-left: 6rem;
+  }
+  
+  .features--laptop .features__img {
+    width: 135%;
+    transform: translateX(-20%);
   }
 
   /* Section 3 large desktop */
