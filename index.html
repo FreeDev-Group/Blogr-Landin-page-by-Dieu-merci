@@ -104,18 +104,33 @@
 
   <!-- ============ SECTION 2: DESIGNED FOR THE FUTURE ============ -->
   <main>
-    <section>
-      <h2>Designed for the future</h2>
+    <section class="features" id="features">
+      <h2 class="features__heading">Designed for the future</h2>
 
-      <h3>Introducing an extensible editor</h3>
-      <p>Blogr features an exceedingly intuitive interface which lets you focus on one thing: creating content.
-        The editor supports management of multiple blogs and allows easy manipulation of embeds such as images,
-        videos, and Markdown. Extensibility with plugins and themes provide easy ways to add functionality or
-        change the looks of a blog.</p>
+      <div class="features__grid">
+        <div class="features__text">
+          <article class="features__block">
+            <h3 class="features__title">Introducing an extensible editor</h3>
+            <p class="features__desc">Blogr features an exceedingly intuitive interface which lets you focus on one
+              thing: creating content. The editor supports management of multiple blogs and allows easy manipulation of
+              embeds such as images, videos, and Markdown. Extensibility with plugins and themes provide easy ways to
+              add functionality or change the looks of a blog.</p>
+          </article>
+          <article class="features__block">
+            <h3 class="features__title">Robust content management</h3>
+            <p class="features__desc">Flexible content management enables users to easily move through posts. Increase
+              the usability of your blog by adding customized categories, sections, format, or flow. With this
+              functionality, you're in full control.</p>
+          </article>
+        </div>
 
-      <h3>Robust content management</h3>
-      <p>Flexible content management enables users to easily move through posts. Increase the usability of your blog
-        by adding customized categories, sections, format, or flow. With this functionality, you're in full control.</p>
+        <div class="features__illustration">
+          <picture>
+            <source media="(min-width: 768px)" srcset="./images/illustration-editor-desktop.svg">
+            <img src="./images/illustration-editor-mobile.svg" alt="Editor illustration" class="features__img">
+          </picture>
+        </div>
+      </div>
     </section>
 
     <!-- ============ SECTION 3: INFRASTRUCTURE ============ -->
