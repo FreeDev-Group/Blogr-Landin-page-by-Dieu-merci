@@ -530,6 +530,72 @@ img {
 }
 
 /* ============================================
+   SECTION 5: FOOTER
+   ============================================ */
+.footer {
+  background-color: var(--gray-900);
+  padding: 4.5rem 1.5rem;
+  text-align: center;
+  border-radius: 0 80px 0 0;
+}
+
+.footer__container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+}
+
+.footer__logo-wrap {
+  margin-bottom: 1rem;
+}
+
+.footer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.footer__heading {
+  font-family: var(--ff-body);
+  color: var(--white);
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.footer__link {
+  font-family: var(--ff-body);
+  color: hsla(0, 0%, 100%, 0.75);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.footer__link:hover {
+  text-decoration: underline;
+}
+
+.attribution {
+  background-color: var(--gray-900);
+  color: var(--white);
+  font-size: 11px;
+  text-align: center;
+  padding-bottom: 1.5rem;
+}
+
+.attribution a {
+  color: var(--red-400);
+  text-decoration: underline;
+}
+
+/* ============================================
    DESKTOP STYLES (768px+)
    ============================================ */
 @media (min-width: 768px) {
@@ -721,6 +787,33 @@ img {
 
   .infra__text {
     flex: 1;
+  }
+
+  /* -- Footer Desktop -- */
+  .footer {
+    padding: 4.5rem 4rem;
+    text-align: left;
+  }
+
+  .footer__container {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 0;
+  }
+
+  .footer__logo-wrap {
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  .footer__nav {
+    flex: 3;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 1.5rem;
   }
 }
 
