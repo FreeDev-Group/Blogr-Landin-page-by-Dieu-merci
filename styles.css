@@ -25,6 +25,8 @@
   --ff-body: 'Overpass', sans-serif;
   --ff-nav: 'Ubuntu', sans-serif;
   --fs-base: 16px;
+  /* Animation Tokens */
+  --anim-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ---------- Reset ---------- */
@@ -102,6 +104,8 @@ img {
 .btn--white:hover {
   background: var(--red-400);
   color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .btn--white-fill {
@@ -112,6 +116,8 @@ img {
 .btn--white-fill:hover {
   background: var(--red-400);
   color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .btn--outline {
@@ -123,6 +129,8 @@ img {
 .btn--outline:hover {
   background: var(--white);
   color: var(--red-400);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
 }
 
 .btn--gradient-mobile {
@@ -135,8 +143,49 @@ img {
 }
 
 /* ============================================
-   HERO SECTION
+   ANIMATIONS & REVEAL
    ============================================ */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s var(--anim-ease);
+}
+
+.reveal--active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Floating Effects for Illustrations — applied to containers, not images */
+.features__illustration {
+  animation: float 6s ease-in-out infinite;
+}
+
+.infra__illustration {
+  animation: float 6s ease-in-out infinite 0.5s;
+}
+
+.features--laptop .features__illustration {
+  animation: float 6s ease-in-out infinite 1.5s;
+}
+
 .hero {
   background: linear-gradient(135deg, var(--orange-300), var(--red-550));
   border-radius: 0 0 0 80px;
@@ -163,14 +212,47 @@ img {
 }
 
 /* ============================================
+   ENTRY ANIMATIONS (KEYFRAMES)
+   ============================================ */
+@keyframes slideUpFade {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDownFade {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
    NAVIGATION
    ============================================ */
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
-  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 2.5rem 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideDownFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.nav--scrolled {
+  background-color: hsla(356, 100%, 66%, 0.95);
+  backdrop-filter: blur(10px);
+  padding-top: 1.2rem !important;
+  padding-bottom: 1.2rem !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.nav__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
@@ -213,21 +295,30 @@ img {
 /* -- Navigation Menu -- */
 .nav__menu {
   position: absolute;
-  top: 70px;
-  left: 0;
-  right: 0;
+  top: 90px;
+  left: 1.5rem;
+  right: 1.5rem;
   background: var(--white);
   border-radius: 8px;
   padding: 1.8rem 1.5rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 0;
   z-index: 100;
+  
+  /* SaaS appearance animation */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-15px) scale(0.98);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top center;
 }
 
 .nav__menu.is-open {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
 }
 
 /* -- Nav Items -- */
@@ -275,13 +366,20 @@ img {
 .nav__dropdown {
   background: hsla(207, 13%, 34%, 0.08);
   border-radius: 6px;
-  padding: 1rem 0;
-  margin-top: 0.6rem;
-  display: none;
+  margin-top: 0;
+  
+  /* Accordion animation */
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav__item--dropdown.is-open .nav__dropdown {
-  display: block;
+  max-height: 400px; /* Arbitrary large height to fit items */
+  opacity: 1;
+  margin-top: 0.6rem;
+  padding: 1rem 0;
 }
 
 .nav__dropdown-link {
@@ -358,9 +456,38 @@ img {
   font-weight: 600;
   font-size: 2.2rem;
   color: var(--white);
-  line-height: 1.2;
+  line-height: 1.3;
   letter-spacing: -0.5px;
   margin-bottom: 0.8rem;
+  
+  /* Prevent layout jumps when empty on mobile (usually 2 lines max) */
+  min-height: 5.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Interactivité */
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), text-shadow 0.6s ease;
+  cursor: default;
+}
+
+.hero__title:hover {
+  transform: translateY(-5px) scale(1.03);
+  text-shadow: 0 15px 40px rgba(255, 255, 255, 0.6);
+}
+
+/* CURSOR BLINK ANIMATION */
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 0.8s infinite;
+  font-weight: 300;
+  color: hsla(0, 0%, 100%, 0.8);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .hero__subtitle {
@@ -369,20 +496,24 @@ img {
   font-size: 1.1rem;
   color: hsla(0, 0%, 100%, 0.8);
   margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s forwards;
 }
 
 .hero__buttons {
   display: flex;
   gap: 1rem;
+  opacity: 0;
+  animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards;
 }
 
 /* ============================================
    SECTION 2: DESIGNED FOR THE FUTURE
    ============================================ */
 .features {
-  padding: 5rem 1.5rem 4rem;
+  padding: 4rem 1.5rem;
+  background: linear-gradient(180deg, hsl(240, 10%, 96%) 0%, hsl(240, 6%, 93%) 100%);
   position: relative;
-  overflow: hidden;
 }
 
 .features__heading {
@@ -415,6 +546,47 @@ img {
 
 .features__block {
   text-align: center;
+  /* -- Premium SaaS Card -- */
+  background: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-left: 5px solid var(--red-400);
+  border-radius: 16px;
+  padding: 2.2rem 2rem;
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s var(--anim-ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.features__block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--orange-300), var(--red-550));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.features__block:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 60px rgba(255, 115, 105, 0.15),
+    0 8px 20px rgba(0, 0, 0, 0.08);
+  border-left-color: var(--red-500);
+}
+
+.features__block:hover::before {
+  opacity: 1;
+}
+
+/* Staggered card delays */
+.features__block:nth-child(2) {
+  transition-delay: 0.12s;
 }
 
 .features__title {
@@ -425,6 +597,8 @@ img {
   margin-bottom: 1rem;
   letter-spacing: -0.3px;
   line-height: 1.3;
+  position: relative;
+  z-index: 1;
 }
 
 .features__desc {
@@ -434,6 +608,8 @@ img {
   color: var(--gray-600);
   line-height: 1.75;
   letter-spacing: 0.2px;
+  position: relative;
+  z-index: 1;
 }
 
 .features__illustration {
@@ -451,8 +627,10 @@ img {
    ============================================ */
 .infra {
   position: relative;
-  margin-top: 8rem;
-  padding: 12rem 1.5rem 6rem;
+  /* Massive white margin above to give space for phones to extrude */
+  margin-top: 13rem;
+  /* Tighter padding internally so text isn't miles below */
+  padding: 5rem 1.5rem 6rem;
 }
 
 .infra__bg {
@@ -495,7 +673,8 @@ img {
 .infra__illustration {
   width: 100%;
   max-width: 320px;
-  margin-top: -220px;
+  /* Pull it massively upwards into the white margin-top of .infra */
+  margin-top: -13rem;
   margin-bottom: 2rem;
   z-index: 3;
   position: relative;
@@ -508,6 +687,22 @@ img {
 .infra__text {
   position: relative;
   z-index: 2;
+  /* -- Glassmorphism Card on dark bg -- */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 2.8rem 2.2rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s var(--anim-ease);
+}
+
+.infra__text:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.25);
+  transform: translateY(-6px);
 }
 
 .infra__title {
@@ -524,7 +719,7 @@ img {
   font-family: var(--ff-body);
   font-weight: 300;
   font-size: 1rem;
-  color: hsla(0, 0%, 100%, 0.75);
+  color: hsla(0, 0%, 100%, 0.8);
   line-height: 1.75;
   letter-spacing: 0.2px;
 }
@@ -624,6 +819,11 @@ img {
     box-shadow: none;
     padding: 0;
     gap: 0.5rem;
+    
+    /* Override mobile hidden states */
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
   }
 
   .nav__item {
@@ -631,19 +831,33 @@ img {
     padding: 0;
     border-bottom: none;
     position: relative;
+    z-index: 10;
   }
 
   .nav__link {
     color: var(--white);
     font-size: 1rem;
     font-weight: 500;
-    opacity: 0.9;
+    opacity: 0.8;
     padding: 0.5rem 1rem;
+    transition: opacity 0.3s ease, border-bottom 0.3s ease;
+  }
+
+  /* Cool hover interact on nav */
+  .nav__link:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 1rem;
+    width: calc(100% - 2rem);
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
   }
 
   .nav__link:hover {
     opacity: 1;
-    text-decoration: underline;
+    text-decoration: none;
   }
 
   /* Arrows — show light, hide dark on desktop */
@@ -654,6 +868,13 @@ img {
   .nav__arrow--dark {
     display: none;
   }
+  
+  /* Clean up is-open for desktop dropping */
+  .nav__item--dropdown:hover .nav__dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
 
   /* Desktop dropdown */
   .nav__dropdown {
@@ -663,10 +884,19 @@ img {
     min-width: 168px;
     background: var(--white);
     border-radius: 6px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     padding: 1.2rem 0;
     margin-top: 0.5rem;
     z-index: 50;
+    
+    /* Reveal animation */
+    max-height: none;
+    overflow: visible;
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .nav__dropdown-link {
@@ -701,92 +931,146 @@ img {
 
   /* -- Section 2 Desktop -- */
   .features {
-    padding: 8rem 2rem 6rem;
+    padding: 10rem 2rem 5rem;
+    overflow: hidden; /* Capture our bleeding images */
   }
 
   .features__heading {
-    font-size: 2.2rem;
-    margin-bottom: 4rem;
+    font-size: 2.22rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    width: 100%;
   }
 
   .features__grid {
+    display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0;
-  }
-
-  .features--laptop .features__grid {
-    flex-direction: row;
+    justify-content: center;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .features__text {
     flex: 1;
-    padding-right: 2rem;
-    gap: 3.5rem;
-  }
-
-  .features__block {
     text-align: left;
+    padding-right: 0;
   }
 
   .features__illustration {
     flex: 1;
     position: relative;
-    overflow: visible;
+    display: flex;
     justify-content: flex-end;
   }
 
   .features__img {
+    position: relative;
+    width: 140%;
     max-width: none;
-    width: 150%;
-    transform: translateX(20%);
+    transform: scale(1.4) translateX(25%);
+    left: auto;
+    top: auto;
   }
 
   /* -- Section 4 Desktop Overrides -- */
-  .features--laptop .features__text {
-    padding-right: 0;
-    padding-left: 2rem;
+  .features--laptop {
+    padding: 5rem 2rem;
+    overflow: hidden;
+  }
+
+  .features--laptop .features__grid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .features--laptop .features__illustration {
+    flex: 1;
+    order: -1; /* Force image to the LEFT */
+    display: flex;
     justify-content: flex-start;
   }
 
   .features--laptop .features__img {
-    width: 125%;
-    transform: translateX(-15%);
+    position: relative;
+    width: 140%;
+    max-width: none;
+    transform: scale(1.3) translateX(-20%);
+    left: auto;
+    right: auto;
+    top: auto;
+  }
+
+  .features--laptop .features__text {
+    flex: 1;
+    text-align: left;
+    padding-right: 0;
+    padding-left: 0;
   }
 
   /* -- Section 3 Desktop -- */
   .infra {
-    padding: 6.5rem 2rem;
-    margin-top: 6rem;
+    padding: 4rem 2rem 5rem;
+    margin-top: 5rem;
+  }
+
+  .infra__bg {
+    border-radius: 0 100px 0 100px;
   }
 
   .infra__bg::before {
-    top: -420px;
-    left: -100px;
-    transform: none;
-    width: 800px;
-    height: 800px;
+    top: 50%;
+    left: -200px;
+    transform: translateY(-50%);
+    width: 900px;
+    height: 900px;
+    background-size: contain;
   }
 
   .infra__container {
+    display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     text-align: left;
-    gap: 3rem;
+    gap: 4rem;
+    min-height: 400px;
   }
 
   .infra__illustration {
     flex: 1;
-    max-width: none;
-    margin-top: -10rem;
-    margin-bottom: -6.5rem;
+    position: relative;
+    top: 0;
+    left: -4rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 500px;
+  }
+
+  .infra__phones {
+    width: 100%;
+    display: block;
+    transform: translateY(-50px); /* Subtle overflow upward */
   }
 
   .infra__text {
     flex: 1;
+    margin-left: 0;
+    padding-right: 5%;
+  }
+
+  .infra__title {
+    font-size: 2.5rem;
+  }
+
+  .infra__desc {
+    font-size: 1.1rem;
+    max-width: none;
   }
 
   /* -- Footer Desktop -- */

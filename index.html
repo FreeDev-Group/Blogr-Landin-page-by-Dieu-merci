@@ -23,71 +23,73 @@
   <!-- ============ SECTION 1: HEADER + HERO ============ -->
   <header class="hero" id="hero">
     <nav class="nav" id="nav">
-      <div class="nav__left">
-        <a href="#" class="nav__logo" aria-label="Blogr home">
-          <img src="./images/logo.svg" alt="Blogr logo">
-        </a>
+      <div class="nav__container">
+        <div class="nav__left">
+          <a href="#" class="nav__logo" aria-label="Blogr home">
+            <img src="./images/logo.svg" alt="Blogr logo">
+          </a>
 
-        <!-- Hamburger toggle (mobile) -->
-        <button class="nav__hamburger" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <img src="./images/icon-hamburger.svg" alt="" class="nav__hamburger-open">
-          <img src="./images/icon-close.svg" alt="" class="nav__hamburger-close">
-        </button>
+          <!-- Hamburger toggle (mobile) -->
+          <button class="nav__hamburger" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <img src="./images/icon-hamburger.svg" alt="" class="nav__hamburger-open">
+            <img src="./images/icon-close.svg" alt="" class="nav__hamburger-close">
+          </button>
 
-        <!-- Navigation menu -->
-        <ul class="nav__menu" id="nav-menu">
-          <li class="nav__item nav__item--dropdown">
-            <button class="nav__link nav__link--dropdown" aria-expanded="false">
-              Product
-              <img src="./images/icon-arrow-light.svg" alt="" class="nav__arrow nav__arrow--light">
-              <img src="./images/icon-arrow-dark.svg" alt="" class="nav__arrow nav__arrow--dark">
-            </button>
-            <ul class="nav__dropdown">
-              <li><a href="#" class="nav__dropdown-link">Overview</a></li>
-              <li><a href="#" class="nav__dropdown-link">Pricing</a></li>
-              <li><a href="#" class="nav__dropdown-link">Marketplace</a></li>
-              <li><a href="#" class="nav__dropdown-link">Features</a></li>
-              <li><a href="#" class="nav__dropdown-link">Integrations</a></li>
-            </ul>
-          </li>
-          <li class="nav__item nav__item--dropdown">
-            <button class="nav__link nav__link--dropdown" aria-expanded="false">
-              Company
-              <img src="./images/icon-arrow-light.svg" alt="" class="nav__arrow nav__arrow--light">
-              <img src="./images/icon-arrow-dark.svg" alt="" class="nav__arrow nav__arrow--dark">
-            </button>
-            <ul class="nav__dropdown">
-              <li><a href="#" class="nav__dropdown-link">About</a></li>
-              <li><a href="#" class="nav__dropdown-link">Team</a></li>
-              <li><a href="#" class="nav__dropdown-link">Blog</a></li>
-              <li><a href="#" class="nav__dropdown-link">Careers</a></li>
-            </ul>
-          </li>
-          <li class="nav__item nav__item--dropdown">
-            <button class="nav__link nav__link--dropdown" aria-expanded="false">
-              Connect
-              <img src="./images/icon-arrow-light.svg" alt="" class="nav__arrow nav__arrow--light">
-              <img src="./images/icon-arrow-dark.svg" alt="" class="nav__arrow nav__arrow--dark">
-            </button>
-            <ul class="nav__dropdown">
-              <li><a href="#" class="nav__dropdown-link">Contact</a></li>
-              <li><a href="#" class="nav__dropdown-link">Newsletter</a></li>
-              <li><a href="#" class="nav__dropdown-link">LinkedIn</a></li>
-            </ul>
-          </li>
+          <!-- Navigation menu -->
+          <ul class="nav__menu" id="nav-menu">
+            <li class="nav__item nav__item--dropdown">
+              <button class="nav__link nav__link--dropdown" aria-expanded="false">
+                Product
+                <img src="./images/icon-arrow-light.svg" alt="" class="nav__arrow nav__arrow--light">
+                <img src="./images/icon-arrow-dark.svg" alt="" class="nav__arrow nav__arrow--dark">
+              </button>
+              <ul class="nav__dropdown">
+                <li><a href="#" class="nav__dropdown-link">Overview</a></li>
+                <li><a href="#" class="nav__dropdown-link">Pricing</a></li>
+                <li><a href="#" class="nav__dropdown-link">Marketplace</a></li>
+                <li><a href="#" class="nav__dropdown-link">Features</a></li>
+                <li><a href="#" class="nav__dropdown-link">Integrations</a></li>
+              </ul>
+            </li>
+            <li class="nav__item nav__item--dropdown">
+              <button class="nav__link nav__link--dropdown" aria-expanded="false">
+                Company
+                <img src="./images/icon-arrow-light.svg" alt="" class="nav__arrow nav__arrow--light">
+                <img src="./images/icon-arrow-dark.svg" alt="" class="nav__arrow nav__arrow--dark">
+              </button>
+              <ul class="nav__dropdown">
+                <li><a href="#" class="nav__dropdown-link">About</a></li>
+                <li><a href="#" class="nav__dropdown-link">Team</a></li>
+                <li><a href="#" class="nav__dropdown-link">Blog</a></li>
+                <li><a href="#" class="nav__dropdown-link">Careers</a></li>
+              </ul>
+            </li>
+            <li class="nav__item nav__item--dropdown">
+              <button class="nav__link nav__link--dropdown" aria-expanded="false">
+                Connect
+                <img src="./images/icon-arrow-light.svg" alt="" class="nav__arrow nav__arrow--light">
+                <img src="./images/icon-arrow-dark.svg" alt="" class="nav__arrow nav__arrow--dark">
+              </button>
+              <ul class="nav__dropdown">
+                <li><a href="#" class="nav__dropdown-link">Contact</a></li>
+                <li><a href="#" class="nav__dropdown-link">Newsletter</a></li>
+                <li><a href="#" class="nav__dropdown-link">LinkedIn</a></li>
+              </ul>
+            </li>
 
-          <!-- Auth buttons (inside mobile menu) -->
-          <li class="nav__auth-mobile">
-            <a href="#" class="nav__login-mobile">Login</a>
-            <a href="#" class="btn btn--gradient-mobile">Sign Up</a>
-          </li>
-        </ul>
-      </div>
+            <!-- Auth buttons (inside mobile menu) -->
+            <li class="nav__auth-mobile">
+              <a href="#" class="nav__login-mobile">Login</a>
+              <a href="#" class="btn btn--gradient-mobile">Sign Up</a>
+            </li>
+          </ul>
+        </div>
 
-      <!-- Auth buttons (desktop) -->
-      <div class="nav__auth">
-        <a href="#" class="nav__login">Login</a>
-        <a href="#" class="btn btn--white">Sign Up</a>
+        <!-- Auth buttons (desktop) -->
+        <div class="nav__auth">
+          <a href="#" class="nav__login">Login</a>
+          <a href="#" class="btn btn--white">Sign Up</a>
+        </div>
       </div>
     </nav>
 
@@ -104,19 +106,19 @@
 
   <!-- ============ SECTION 2: DESIGNED FOR THE FUTURE ============ -->
   <main>
-    <section class="features" id="features">
+    <section class="features reveal" id="features">
       <h2 class="features__heading">Designed for the future</h2>
 
       <div class="features__grid">
         <div class="features__text">
-          <article class="features__block">
+          <article class="features__block reveal">
             <h3 class="features__title">Introducing an extensible editor</h3>
             <p class="features__desc">Blogr features an exceedingly intuitive interface which lets you focus on one
               thing: creating content. The editor supports management of multiple blogs and allows easy manipulation of
               embeds such as images, videos, and Markdown. Extensibility with plugins and themes provide easy ways to
               add functionality or change the looks of a blog.</p>
           </article>
-          <article class="features__block">
+          <article class="features__block reveal">
             <h3 class="features__title">Robust content management</h3>
             <p class="features__desc">Flexible content management enables users to easily move through posts. Increase
               the usability of your blog by adding customized categories, sections, format, or flow. With this
@@ -134,13 +136,13 @@
     </section>
 
     <!-- ============ SECTION 3: INFRASTRUCTURE ============ -->
-    <section class="infra" id="infrastructure">
+    <section class="infra reveal" id="infrastructure">
       <div class="infra__bg"></div>
       <div class="infra__container">
         <div class="infra__illustration">
           <img src="./images/illustration-phones.svg" alt="Phone illustrations" class="infra__phones">
         </div>
-        <div class="infra__text">
+        <div class="infra__text reveal">
           <h2 class="infra__title">State of the Art Infrastructure</h2>
           <p class="infra__desc">With reliability and speed in mind, worldwide data centers provide the backbone for
             ultra-fast connectivity. This ensures your site will load instantly, no matter where your readers are,
@@ -150,7 +152,7 @@
     </section>
 
     <!-- ============ SECTION 4: FEATURES ============ -->
-    <section class="features features--laptop">
+    <section class="features features--laptop reveal">
       <div class="features__grid features__grid--laptop">
         <div class="features__illustration">
           <picture>
@@ -161,14 +163,14 @@
         </div>
 
         <div class="features__text">
-          <article class="features__block">
+          <article class="features__block reveal">
             <h3 class="features__title">Free, open, simple</h3>
             <p class="features__desc">Blogr is a free and open source application backed by a large community of helpful
               developers. It supports features such as code syntax highlighting, RSS feeds, social media integration,
               third-party commenting tools, and works seamlessly with Google Analytics. The architecture is clean and is
               relatively easy to learn.</p>
           </article>
-          <article class="features__block">
+          <article class="features__block reveal">
             <h3 class="features__title">Powerful tooling</h3>
             <p class="features__desc">Batteries included. We built a simple and straightforward CLI tool that makes
               customization and deployment a breeze, but capable of producing even the most complicated sites.</p>
