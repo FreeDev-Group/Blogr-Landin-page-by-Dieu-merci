@@ -41,8 +41,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [GitHub Repository](https://github.com/FreeDev-Group/Blogr-Landin-page-by-Dieu-merci)
-- Live Site URL: [Live Demo](https://freedev-group.github.io/Blogr-Landin-page-by-Dieu-merci/)
+- Solution URL: [GitHub Repository](https://github.com/Mugisho-dev-metasploit/blogr-landing-page-challenge-frontend-methor-06)
+- Live Site URL: [Live Demo](https://mugisho-dev-metasploit.github.io/blogr-landing-page-challenge-frontend-methor-06/)
 
 ## My process
 
@@ -86,5 +86,5 @@ const revealObserver = new IntersectionObserver(
 
 ## Author
 
-- GitHub - [Dieu-merci](https://github.com/ir-mugisho-merci)
-- Frontend Mentor - [@ir-mugisho-merci](https://www.frontendmentor.io/profile/ir-mugisho-merci)
+- GitHub - [@Mugisho-dev-metasploit](https://github.com/Mugisho-dev-metasploit)
+- Frontend Mentor - [@Mugisho-dev-metasploit](https://www.frontendmentor.io/profile/Mugisho-dev-metasploit)
